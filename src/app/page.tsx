@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { getProducts } from "./api/api";
+import { getProducts } from "./api/products";
 import { IProducts } from "./interface/interface";
 
 export default function Home() {
