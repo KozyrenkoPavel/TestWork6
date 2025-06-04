@@ -13,7 +13,7 @@ export async function POST(request: Request) {
   }
 
   return NextResponse.json(
-    { message: "Невернно введен логин или пароль" },
+    { message: "Неверный логин или пароль" },
     { status: 401 }
   );
 }
