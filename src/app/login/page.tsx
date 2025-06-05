@@ -1,11 +1,22 @@
 "use client";
 
-import LoadingPages from "../pages/LoadingPages";
+import { useRouter } from "next/navigation";
+import { useAuth } from "../hook/AuthProvider";
+import LoginPages from "../pages/LoginPages";
 
 export default function Loading() {
+  const { setToken } = useAuth();
+  const router = useRouter();
+
+  const handleLogin = (newToken: string) => {
+    localStorage.setItem("jwtToken", newToken);
+    setToken(newToken);
+    router.push("/");
+  };
+
   return (
     <div>
-      <LoadingPages onLogin={(token: string) => console.log("")} />
+      <LoginPages onLogin={handleLogin} />
     </div>
   );
 }

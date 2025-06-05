@@ -1,0 +1,42 @@
+"use client";
+
+import { createContext, useContext, useEffect, useState } from "react";
+
+interface TAuthContext {
+  token: string | null;
+  setToken: (token: string | null) => void;
+}
+
+type TProps = {
+  children: React.ReactNode;
+};
+
+const AuthContext = createContext<TAuthContext | undefined>(undefined);
+
+export const useAuth = () => {
+  const context = useContext(AuthContext);
+
+  if (!context) {
+    throw new Error("useAuth необходимо использовать внутри AuthProvider");
+  }
+
+  return context;
+};
+
+export default function AuthProvider({ children }: TProps) {
+  const [token, setToken] = useState<string | null>(null);
+
+  useEffect(() => {
+    const savedToken = localStorage.getItem("jwtToken");
+
+    if (savedToken) {
+      setToken(savedToken);
+    }
+  }, []);
+
+  return (
+    <AuthContext.Provider value={{ token, setToken }}>
+      {children}
+    </AuthContext.Provider>
+  );
+}

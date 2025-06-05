@@ -1,11 +1,14 @@
 "use client";
 
+import ProtectedRoute from "./hoc/ProtectedRoute";
 import HomePages from "./pages/HomePages";
 
 export default function Home() {
   return (
-    <div>
-      <HomePages />
-    </div>
+    <ProtectedRoute>
+      <div>
+        <HomePages />
+      </div>
+    </ProtectedRoute>
   );
 }

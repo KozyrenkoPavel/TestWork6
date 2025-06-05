@@ -7,7 +7,7 @@ type Tprops = {
   onLogin: (token: string) => void;
 };
 
-export default function LoadingPages({ onLogin }: Tprops) {
+export default function LoginPages({ onLogin }: Tprops) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");

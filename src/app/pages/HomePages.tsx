@@ -1,25 +1,22 @@
 "use client";
 
+import { useAuth } from "../hook/AuthProvider";
+
 import { useEffect, useState } from "react";
 import { getProducts } from "../api/products";
 import { IProducts } from "../interface/interface";
-import LoadingPages from "./LoadingPages";
 
 export default function HomePages() {
   const [products, setProducts] = useState<IProducts[]>([]);
-  const [token, setToken] = useState<string | null>(null);
-
-  const handleLogin = (newToken: string) => {
-    localStorage.setItem("jwtToken", newToken);
-    setToken(newToken);
-    fetchProducts(newToken);
-  };
+  const { token, setToken } = useAuth();
 
   const handleLogout = () => {
     localStorage.removeItem("jwtToken");
     setToken(null);
     setProducts([]);
   };
+
+  // handleLogout();
 
   const fetchProducts = async (authToken: string) => {
     if (!authToken) return;
@@ -33,26 +30,8 @@ export default function HomePages() {
   };
 
   useEffect(() => {
-    const savedToken = localStorage.getItem("jwtToken");
-
-    if (savedToken) {
-      setToken(savedToken);
-    }
-  }, []);
-
-  useEffect(() => {
     if (token) fetchProducts(token);
   }, [token]);
-
-  console.log(products);
-
-  if (!token)
-    return (
-      <div>
-        <h2>Пожалуйста, войдите</h2>
-        <LoadingPages onLogin={handleLogin} />
-      </div>
-    );
 
   return <div>Home</div>;
 }
