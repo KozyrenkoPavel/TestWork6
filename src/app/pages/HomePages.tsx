@@ -11,6 +11,7 @@ import ProductsList from "../components/ProductsList";
 
 export default function HomePages() {
   const { token, setToken } = useAuth();
+  const [isLoading, setIsLoading] = useState(false);
 
   const dispatsh = useDispatch();
 
@@ -22,6 +23,7 @@ export default function HomePages() {
 
   const fetchProducts = async (authToken: string) => {
     if (!authToken) return;
+    setIsLoading(true);
 
     try {
       const response = await getProducts(authToken);
@@ -30,6 +32,8 @@ export default function HomePages() {
       }
     } catch (err) {
       console.error("Ошибка получения продуктов", err);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -40,7 +44,7 @@ export default function HomePages() {
   return (
     <div>
       <ProductsList />
-      <button onClick={() => handleLogout()}>LogOut</button>
+      {/* <button onClick={() => handleLogout()}>LogOut</button> */}
     </div>
   );
 }
