@@ -1,6 +1,8 @@
 "use client";
 
 import { createContext, useContext, useEffect, useState } from "react";
+import { Provider } from "react-redux";
+import { store } from "../store/store";
 
 interface TAuthContext {
   token: string | null;
@@ -35,8 +37,10 @@ export default function AuthProvider({ children }: TProps) {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ token, setToken }}>
-      {children}
-    </AuthContext.Provider>
+    <Provider store={store}>
+      <AuthContext.Provider value={{ token, setToken }}>
+        {children}
+      </AuthContext.Provider>
+    </Provider>
   );
 }

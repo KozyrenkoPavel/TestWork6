@@ -5,25 +5,29 @@ import { useAuth } from "../hook/AuthProvider";
 import { useEffect, useState } from "react";
 import { getProducts } from "../api/products";
 import { IProducts } from "../interface/interface";
+import { useDispatch } from "react-redux";
+import { updateProductsList } from "../store/productsSlice";
+import ProductsList from "../components/ProductsList";
 
 export default function HomePages() {
-  const [products, setProducts] = useState<IProducts[]>([]);
   const { token, setToken } = useAuth();
+
+  const dispatsh = useDispatch();
 
   const handleLogout = () => {
     localStorage.removeItem("jwtToken");
     setToken(null);
-    setProducts([]);
+    dispatsh(updateProductsList([]));
   };
-
-  // handleLogout();
 
   const fetchProducts = async (authToken: string) => {
     if (!authToken) return;
 
     try {
       const response = await getProducts(authToken);
-      setProducts(response);
+      if (response) {
+        dispatsh(updateProductsList(response));
+      }
     } catch (err) {
       console.error("Ошибка получения продуктов", err);
     }
@@ -33,5 +37,10 @@ export default function HomePages() {
     if (token) fetchProducts(token);
   }, [token]);
 
-  return <div>Home</div>;
+  return (
+    <div>
+      <ProductsList />
+      <button onClick={() => handleLogout()}>LogOut</button>
+    </div>
+  );
 }
