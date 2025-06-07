@@ -1,5 +1,5 @@
 import axios from "axios";
-import { TRequest } from "../types/types";
+import { TRequest } from "../../types/types";
 
 const API_URL = "https://dummyjson.com/products/?limit=12";
 

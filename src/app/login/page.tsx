@@ -1,8 +1,8 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useAuth } from "../hook/AuthProvider";
-import LoginPages from "../pages/LoginPages";
+import { useAuth } from "../../hook/AuthProvider";
+import LoginPages from "../../pages/LoginPages";
 
 export default function Loading() {
   const { setToken } = useAuth();

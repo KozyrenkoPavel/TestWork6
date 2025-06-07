@@ -1,7 +1,7 @@
 interface IProductsBasic {
   id: number;
   title: string;
-  img: string;
+  images: string[];
   price: number;
   category: string;
 }

@@ -5,8 +5,8 @@ import { Provider } from "react-redux";
 import { store } from "../store/store";
 
 interface TAuthContext {
-  token: string | null;
-  setToken: (token: string | null) => void;
+  token: string;
+  setToken: (token: string) => void;
 }
 
 type TProps = {
@@ -26,7 +26,7 @@ export const useAuth = () => {
 };
 
 export default function AuthProvider({ children }: TProps) {
-  const [token, setToken] = useState<string | null>(null);
+  const [token, setToken] = useState<string>("");
 
   useEffect(() => {
     const savedToken = localStorage.getItem("jwtToken");
