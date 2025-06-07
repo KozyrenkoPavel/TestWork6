@@ -1,9 +1,9 @@
 "use client";
 
 import { useAuth } from "@/hook/AuthProvider";
-import logo from "../img/logo.png";
 import { useDispatch } from "react-redux";
 import { updateProductsList } from "@/store/productsSlice";
+import styles from "./styles.module.scss";
 
 export default function HeaderProducts() {
   const { token, setToken } = useAuth();
@@ -17,22 +17,22 @@ export default function HeaderProducts() {
   };
 
   return (
-    <header>
-      <div>
+    <header className={styles.headerProducts}>
+      <div className={styles.headerProducts__logo}>
         <h1>Abelohost Shop</h1>
-        <img src={logo.src} />
+
         {token && <button onClick={() => handleLogout()}>Logout</button>}
       </div>
 
       {token && (
-        <div>
+        <div className={styles.headerProducts__user}>
           <span>
-            <label>First name</label>
-            <p>admin</p>
+            <label>First name: </label>
+            admin
           </span>
           <span>
-            <label>Last name</label>
-            <p>admin</p>
+            <label>Last name: </label>
+            admin
           </span>
         </div>
       )}
