@@ -5,17 +5,17 @@
   margin: 0 auto;
 
   &__input {
-    height: 55px;
+    height: 80px;
     margin-bottom: 20px;
-    font-size: 18px;
+    font-size: 20px;
     padding: 5px;
-    // border: none;
+    border: 1px solid rgba(226, 212, 212, 0.767);
     border-radius: 10px;
     outline: none;
   }
 
   &__btn {
-    height: 40px;
+    height: 60px;
     border-radius: 10px;
     border: none;
     background-color: #000;
@@ -27,5 +27,33 @@
 
   &__btn:hover {
     background-color: rgba(63, 60, 60, 0.767);
+  }
+}
+
+@media (max-width: 1600px) {
+  .login {
+    &__input {
+      height: 60px;
+      font-size: 18px;
+    }
+    &__btn {
+      height: 40px;
+    }
+  }
+}
+
+@media (max-width: 760px) {
+  .login {
+    width: 320px;
+
+    &__input {
+      height: 40px;
+      font-size: 15px;
+    }
+
+    &__btn {
+      height: 32px;
+      font-size: 16px;
+    }
   }
 }

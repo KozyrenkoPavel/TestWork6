@@ -26,14 +26,14 @@ export default function HeaderProducts() {
 
       {token && (
         <div className={styles.headerProducts__user}>
-          <span>
+          <div>
             <label>First name: </label>
             admin
-          </span>
-          <span>
+          </div>
+          <div>
             <label>Last name: </label>
             admin
-          </span>
+          </div>
         </div>
       )}
     </header>
