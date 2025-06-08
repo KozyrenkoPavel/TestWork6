@@ -1,4 +1,5 @@
 import { IProducts } from "../interface/interface";
+import styles from "./styles.module.scss";
 
 export default function Product({
   id,
@@ -10,11 +11,12 @@ export default function Product({
   const img: string | undefined = images[0];
 
   return (
-    <div>
-      {/* <img src={images[0]}></img> */}
+    <div className={styles.productsList__productItem}>
+      <img src={images[0]}></img>
       <h3>{title}</h3>
       <h4>{category}</h4>
-      <h4>{price}$</h4>
+      <h4 className={styles.price}>{price}$</h4>
+      <button className={styles.btnItem}>Add to cart</button>
     </div>
   );
 }

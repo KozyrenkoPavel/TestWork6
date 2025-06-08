@@ -11,7 +11,7 @@ export default function ProjectContainer({
     <div className={styles.productsContainer}>
       <HeaderProducts />
 
-      {children}
+      <div className={styles.productsContainer__children}>{children}</div>
 
       <FooterProducts />
     </div>

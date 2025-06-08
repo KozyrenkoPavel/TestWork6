@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { useAuth } from "../hook/AuthProvider";
+import Spiner from "@/components/Spiner";
 
 type TProps = {
   children: React.ReactNode;
@@ -21,7 +22,11 @@ export default function ProtectedRoute({ children }: TProps) {
   }, [token, router]);
 
   if (!token) {
-    return <div>Спинер</div>;
+    return (
+      <>
+        <Spiner />
+      </>
+    );
   }
 
   return <>{children}</>;

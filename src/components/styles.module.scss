@@ -1,7 +1,13 @@
 .productsContainer {
-  width: 1400px;
-  margin: 0 auto;
+  width: 100%;
+  height: 100vh;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+
+  &__children {
+    flex: 1;
+  }
 }
 
 .headerProducts {
@@ -11,19 +17,21 @@
   color: rgba(226, 212, 212, 0.767);
   border-bottom: 2px solid red;
   border-radius: 10px;
+  margin-bottom: 20px;
 
   &__logo {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 965px;
+    width: 65%;
+    height: 55px;
     margin: 0 auto;
     padding: 10px;
     margin-bottom: 5px;
 
     button {
-      width: 200px;
-      height: 40px;
+      width: 130px;
+      height: 100%;
       border: none;
       border-radius: 10px;
       background-color: rgba(226, 212, 212, 0.493);
@@ -41,9 +49,116 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 385px;
+    width: 25%;
     margin: 0 auto;
     padding: 5px;
-    font-size: 18px;
+    font-size: 22px;
+  }
+}
+
+.productsList {
+  width: 1400px;
+  margin: 0 auto;
+
+  &__title {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    margin-bottom: 30px;
+  }
+
+  &__items {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
+  &__productItem {
+    width: 400px;
+    height: 360px;
+    border: 2px solid rgba(73, 69, 69, 0.192);
+    border-radius: 15px;
+    margin-bottom: 40px;
+
+    img {
+      width: 220px;
+      height: 220px;
+      margin-bottom: 10px;
+    }
+
+    h3 {
+      font-size: 22px;
+      margin-bottom: 5px;
+    }
+
+    h4 {
+      font-size: 18px;
+      margin-bottom: 5px;
+      color: rgba(112, 107, 107, 0.767);
+    }
+
+    .price {
+      color: red;
+    }
+
+    .btnItem {
+      width: 130px;
+      height: 30px;
+      border: 2px solid rgba(73, 69, 69, 0.192);
+      border-radius: 10px;
+      background-color: white;
+      font-size: 20px;
+      color: rgba(112, 107, 107, 0.767);
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: rgba(226, 212, 212, 0.767);
+    }
+  }
+}
+
+.overlay {
+  position: fixed;
+  top: 50%;
+  left: 49%;
+  width: 100vh;
+  height: 100vh;
+  display: "flex";
+  justify-content: "center";
+  align-items: "center";
+  z-index: 9999;
+
+  &__spiner {
+    width: 50px;
+    height: 50px;
+    border: 6px solid #ccc;
+    border-top-color: #333;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+}
+
+.footer {
+  width: 100%;
+  font-size: 20px;
+  color: rgba(112, 107, 107, 0.767);
+  padding-bottom: 20px;
+
+  &__separator {
+    width: 100%;
+    height: 1px;
+    background-color: rgba(112, 107, 107, 0.767);
+    margin-bottom: 20px;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
   }
 }

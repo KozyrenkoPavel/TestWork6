@@ -2,6 +2,7 @@
 
 import axios from "axios";
 import { useState } from "react";
+import styles from "./styles.module.scss";
 
 type Tprops = {
   onLogin: (token: string) => void;
@@ -28,23 +29,25 @@ export default function LoginPages({ onLogin }: Tprops) {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <input
-          type="password"
-          placeholder="Пароль"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <button type="submit">Login</button>
-        {error && <p style={{ color: "red" }}>{error}</p>}
-      </form>
-    </div>
+    <form className={styles.login} onSubmit={handleSubmit}>
+      <input
+        type="text"
+        placeholder="Username"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        className={styles.login__input}
+      />
+      <input
+        type="password"
+        placeholder="Password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        className={styles.login__input}
+      />
+      <button className={styles.login__btn} type="submit">
+        Login
+      </button>
+      {error && <p style={{ color: "red" }}>{error}</p>}
+    </form>
   );
 }

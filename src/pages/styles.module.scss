@@ -1,0 +1,31 @@
+.login {
+  display: flex;
+  flex-direction: column;
+  width: 580px;
+  margin: 0 auto;
+
+  &__input {
+    height: 55px;
+    margin-bottom: 20px;
+    font-size: 18px;
+    padding: 5px;
+    // border: none;
+    border-radius: 10px;
+    outline: none;
+  }
+
+  &__btn {
+    height: 40px;
+    border-radius: 10px;
+    border: none;
+    background-color: #000;
+    color: rgba(226, 212, 212, 0.767);
+    font-size: 22px;
+    cursor: pointer;
+    margin-bottom: 10px;
+  }
+
+  &__btn:hover {
+    background-color: rgba(63, 60, 60, 0.767);
+  }
+}
